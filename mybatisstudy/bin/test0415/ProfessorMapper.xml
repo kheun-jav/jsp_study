@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- /mapper/ProfessorMapper1.xml -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="professor">
+	<!-- test2 1번 -->
+	<select id="count" resultType="int">
+		select count(*) from Professor
+	</select>
+	<!-- test2 2번 -->
+	<select id="selectall" parameterType= "Professor" resultType="Professor">
+		select * from Professor
+	</select>
+	<!-- test2 3번 -->
+	<select id="deptnolist" parameterType= "int" resultType="Professor">
+		select * from Professor where deptno = #{deptno}
+	</select>
+	<!-- test2 4번 -->
+	<select id="nplist" parameterType="map" resultType="Professor">
+		select * from Professor where name like '${name}%' and position = #{position}
+	</select>
+</mapper>

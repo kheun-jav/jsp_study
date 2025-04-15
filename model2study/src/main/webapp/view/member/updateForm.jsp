@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%-- /webapp/view/member/updateForm.jsp --%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +8,17 @@
 <title>수정 전 화면 조회</title>
 </head>
 <body>
-<form action="update" method="post" onsubmit="return input_check(this)" 
-    name="f">
- <input type="hidden" name="picture" value="${mem.picture}">
-<table><caption>회원정보 수정</caption>
+<form action="update" method="post" onsubmit="return input_check(this)" name="f">
+<input type="hidden" name = "picture" value="${mem.picture}">
+<table>
 <tr><td rowspan="4" valign="bottom">
   <img src="../picture/${mem.picture}" width="100" height="120" id="pic"><br>
   <font size="1"><a href="javascript:win_upload()">사진수정</a></font>
 </td><th>아이디</th>
+<%-- 
+disabled="disabled" : 파라미터로 전송 안됨
+readonly : 값 수정 불가. 파라미터 전송 가능 
+--%>
      <td><input type="text" value="${mem.id}" name="id" readonly></td></tr>
 <tr><th>비밀번호</th><td><input type="password" name="pass"></td></tr>
 <tr><th>이름</th><td><input type="text" name="name" value="${mem.name}"></td></tr>
@@ -29,11 +31,13 @@
 <tr><th>이메일</th><td colspan="2">
 <input type="text" name="email" value="${mem.email}"></td></tr>
 <tr><td colspan="3"><button>회원수정</button>
-<c:if test="${param.id == sessionScope.login }">
-<button type="button" onclick="win_passchg()">비밀번호수정</button>
+
+<c:if test="${param.id == sessionScope.login}">
+	<button type="button" onclick="win_passchg()">비밀번호수정</button>
 </c:if>
 </td></tr>
 </table></form>
+
 <script type="text/javascript">
    function  inputcheck(f) {
        if(f.pass.value == "") {
@@ -41,7 +45,7 @@
 		   f.pass.focus();
 		   return false;
 	   }
-	   return true;
+       return true;
    }   
    function win_passchg() {
 	  var op = "width=500, height=250, left=50,top=150";
