@@ -40,12 +40,12 @@
 <body>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>관리자페이지</h1>
-  <p>SSEUL V1.6</p> 
+  <h1>Model2 Page</h1>
+  <p>세미프로젝트 대비</p> 
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">SSEUL</a>
+  <a class="navbar-brand" href="#">Model2</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>

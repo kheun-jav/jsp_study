@@ -9,3 +9,4 @@
    - mybatis.properties : 환경변수값 저장.
 5. 2개의 jar 파일을 classpath에 설정
 
+

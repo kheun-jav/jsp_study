@@ -29,8 +29,8 @@
 					<tr>
 						<td>보내는 사람</td>
 						<td>
-						본인구글ID : <input type="text" name="googleid" class="form-control" value="dongin971228">
-						본인구글PW : <input type="password" name="googlepw" class="form-control" value="uxcarnnhmurzohdo">
+						본인구글ID : <input type="text" name="googleid" class="form-control" value="kiheun00">
+						본인구글PW : <input type="password" name="googlepw" class="form-control" value="yokynyalewnaktcw">
 						</td>
 					<tr>
 						<td>받는사람</td>

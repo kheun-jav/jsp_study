@@ -13,9 +13,17 @@
 	</select>
 	<!-- test2 3번 -->
 	<select id="deptnolist" parameterType= "int" resultType="Professor">
-		select * from Professor where deptno = #{deptno}
+		select * from Professor where deptno = #{value}
 	</select>
-	<!-- test2 4번 -->
+	<!-- test2 4번 
+		Test2 에서 생성된 Map 객체의 value값들을 sql 구문 내에 사용한다.
+		특정 자료형으로써의 value 값을 사용하고 싶으면 #{value}
+		자료형에 상관없이 value 값을 사용하고 싶으면 ${value}
+		name like 에서 $를 사용한 경우를 살펴보면
+		value값으로서의 name(김)이 ''로 묶여있어서
+		결과적으로 like 다음 내용은 '김%'이 됨.
+		따라서 김으로 시작하는 이름을 가진 교수들이 select됨
+	-->
 	<select id="nplist" parameterType="map" resultType="Professor">
 		select * from Professor where name like '${name}%' and position = #{position}
 	</select>

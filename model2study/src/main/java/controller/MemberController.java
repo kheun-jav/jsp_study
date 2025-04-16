@@ -307,6 +307,7 @@ public class MemberController extends MskimRequestMapping{
 		String sender = request.getParameter("googleid") + "@gmail.com";
 		// 구글 앱 비밀번호 : uxcarnnhmurzohdo
 		String passwd = request.getParameter("googlepw");
+//		passwd="yokynyalewnaktcw";
 		// recipient : 테스트 <test1이메일>, 테스트2 <test2이메일>
 		String recipient = request.getParameter("recipient");
 		String title = request.getParameter("title");

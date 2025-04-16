@@ -43,11 +43,14 @@ public class Test2 {
 		for(Professor p : list) System.out.println(p);
 		System.out.println("==========================================================================================");
 		System.out.println("3: 교수중 101번 학과의 교수 정보를 출력하기");
-		pf.setDeptno(101);
-		list = session.selectList("professor.deptnolist", pf.getDeptno());
+		list = session.selectList("professor.deptnolist", 101);
 		for(Professor p : list) System.out.println(p);	
 		System.out.println("==========================================================================================");
 		System.out.println("4: 교수중 성이 김씨인 시간강사 정보를 출력하기");
+		/*
+		 * selectList 안에 2개의 조건을 넣을 수 없으므로,
+		 * Map 객체에 칼럼명을 key값으로, 조건값을 value로 설정한다.
+		 */
 		Map<String,Object> map = new HashMap<>();
 		map.put("name","김");
 		map.put("position", "시간강사");
