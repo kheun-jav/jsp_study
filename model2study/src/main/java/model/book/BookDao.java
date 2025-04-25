@@ -17,13 +17,25 @@ public class BookDao {
 	public boolean insert(Book book) {
 		SqlSession session = MybatisConnection.getConnection();
 		try {
-			return session.getMapper(cls).insert(book);
+			return session.getMapper(cls).insert(book) > 0;
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			MybatisConnection.close(session);
 		}		
 		return false;
+	}
+
+	public List<Book> list() {
+		SqlSession session = MybatisConnection.getConnection();
+		try {
+			return session.getMapper(cls).list();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			MybatisConnection.close(session);
+		}
+		return ;		
 	}
 	
 }

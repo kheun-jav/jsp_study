@@ -56,7 +56,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<textarea name="content" cols="40" rows="10" class="form-control" id="summernot"></textarea>
+							<textarea name="content" cols="40" rows="10" class="form-control" id="summernote"></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -67,5 +67,38 @@
 				</table>
 			</form>
 		</div>
+		
+<!-- summernote를 이용하여 textarea 변경 -->
+<script type="text/javascript">
+	$(function(){
+		$("#summernote").summernote({
+			height:300,
+			callbacks : {
+				onImageUpload : function(files){
+					for(let i=0; i<files.length; i++) {
+						sendFile(files[i]);
+					}
+				}
+			}
+		})
+	})
+	function sendFile(file) {
+		let data = new FormData(); 
+		data.append("file", file); 
+		$.ajax({
+			url : "${path}/uploadImage",
+			type : "post",
+			data : data,
+			processData : false,
+			contentType : false,
+			success : function(url){
+				$("#summernote").summernote("insertImage", url);
+			},
+			error : function(e) {
+				alert("이미지 업로드 실패 :" + e.status);
+			}
+		})
+	}
+</script>
 	</body>
 </html>

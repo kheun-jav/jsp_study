@@ -21,21 +21,7 @@ import model.book.BookDao;
 @WebServlet(urlPatterns = {"/book/*"},
 	initParams= {@WebInitParam(name="view", value="/view/")})
 public class BookController extends MskimRequestMapping {
-	private BookDao dao = new BookDao();
-	
-	
-//	@RequestMapping("bookForm")
-//	public String bookForm(HttpServletRequest request,
-//			HttpServletResponse response) {	
-//	String login = (String)request.getSession().getAttribute("login");
-//	
-//	if(login == null) {
-//		request.setAttribute("msg", "로그인하십쇼");
-//		request.setAttribute("url", "../member/loginForm");
-//	}
-//	return "alert";
-//	}
-	
+	private BookDao dao = new BookDao();	
 	
 	@RequestMapping("bookwrite")
 	public String bookwrite(HttpServletRequest request,
@@ -56,8 +42,7 @@ public class BookController extends MskimRequestMapping {
 	b.setTitle(title);
 	b.setContent(content);
 	if(dao.insert(b)) {
-		request.setAttribute("msg", "방명록이 저장되었습니다");
-		request.setAttribute("url", "bookList");
+		return "redirect:bookList";
 		} else {
 		request.setAttribute("msg", "오류발생 저장못함");
 		request.setAttribute("url", "writeForm");
@@ -66,13 +51,13 @@ public class BookController extends MskimRequestMapping {
 		return "alert";
 	}
 	
-	@RequestMapping("listForm")
-	public String list(HttpServletRequest request,
-			HttpServletResponse response) {
-		Book b = new Book();
-		Book book = dao.selectOne(writer);
-		
-		return null;
+	@RequestMapping("bookList")
+	public String booklist(HttpServletRequest request,
+			HttpServletResponse response) {	
+		List<Book> list = dao.list();
+		request.setAttribute("list", list);
+		return "book/bookList";  //view로 forward 함
+								//view : /webapp/view/book/bookList.jsp
 	}
 	
 }
